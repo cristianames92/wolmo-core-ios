@@ -46,3 +46,58 @@ public extension UIViewController {
     }
     
 }
+
+public extension UIViewController {
+
+    /**
+     Configures the navigation bar to have a back button.
+     - parameter backImage: The image of the back button.
+     */
+    func configureBasicNavigationBarWithBackButton(backImage: UIImage) {
+        navigationController!.navigationBar.topItem?.title = ""
+        navigationController!.navigationBar.backIndicatorImage = backImage
+        navigationController!.navigationBar.backIndicatorTransitionMaskImage = backImage
+    }
+    
+    /**
+     Configures the navigation bar color.
+     - parameter color: The new color of the navigation bar.
+     */
+    func configureNavigationBarColor(_ color: UIColor) {
+        navigationController!.navigationBar.barTintColor = color
+    }
+    
+    /**
+     Sets a collection of buttons as the navigation bar left buttons.
+     - parameter buttons: the Array of buttons to use.
+     */
+    func configureNavigationLeftButtons(_ buttons: [UIBarButtonItem]) {
+        navigationItem.leftBarButtonItems = buttons
+    }
+    
+    /**
+     Sets a collection of buttons as the navigation bar right buttons.
+     - parameter buttons: the Array of buttons to use.
+     */
+    func configureNavigationRightButtons(_ buttons: [UIBarButtonItem]) {
+        navigationItem.rightBarButtonItems = buttons
+    }
+
+    /**
+     Adds and configures a label to use as title of the navigation bar.
+     - parameter title: the string of the label.
+     - parameter font: the font to use for the label. Default: .systemFont size 18
+     - parameter color: the color of the text. Default: .white
+     */
+    func setNavBarTitle(_ title: String, font: UIFont = .systemFont(ofSize: 18), color: UIColor = .white) {
+        let label = UILabel(frame: .zero)
+        label.backgroundColor = .clear
+        label.font = font
+        label.textColor = color
+        label.adjustsFontSizeToFitWidth = true
+        label.text = title
+        label.sizeToFit()
+        navigationItem.titleView = label
+    }
+    
+}
