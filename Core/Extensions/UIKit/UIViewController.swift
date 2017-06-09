@@ -47,11 +47,14 @@ public extension UIViewController {
     
 }
 
+//MARK: - Navigation Bar
+
 public extension UIViewController {
 
     /**
-     Configures the navigation bar to have a back button.
+     Configures the navigation bar to have a back button with a particular image.
      - parameter backImage: The image of the back button.
+     - warning: This function must be called when self is inside a navigation controller. If not it will arise a runtime nil-force-unwrapping error.
      */
     func configureBasicNavigationBarWithBackButton(backImage: UIImage) {
         navigationController!.navigationBar.topItem?.title = ""
@@ -62,6 +65,7 @@ public extension UIViewController {
     /**
      Configures the navigation bar color.
      - parameter color: The new color of the navigation bar.
+     - warning: This function must be called when self is inside a navigation controller. If not it will arise a runtime nil-force-unwrapping error.
      */
     func configureNavigationBarColor(_ color: UIColor) {
         navigationController!.navigationBar.barTintColor = color
@@ -89,7 +93,7 @@ public extension UIViewController {
      - parameter font: the font to use for the label. Default: .systemFont size 18
      - parameter color: the color of the text. Default: .white
      */
-    func setNavBarTitle(_ title: String, font: UIFont = .systemFont(ofSize: 18), color: UIColor = .white) {
+    func setNavBarTitle(_ title: String, font: UIFont, color: UIColor) {
         let label = UILabel(frame: .zero)
         label.backgroundColor = .clear
         label.font = font
