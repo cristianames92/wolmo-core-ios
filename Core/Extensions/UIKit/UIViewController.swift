@@ -47,19 +47,19 @@ public extension UIViewController {
     
 }
 
-//MARK: - Navigation Bar
+// MARK: - Navigation Bar
 
 public extension UIViewController {
 
     /**
-     Configures the navigation bar to have a back button with a particular image.
-     - parameter backImage: The image of the back button.
+     Configures the navigation bar to have a particular image as back button.
+     - parameter image: The image of the back button.
      - warning: This function must be called when self is inside a navigation controller. If not it will arise a runtime nil-force-unwrapping error.
      */
-    func configureBasicNavigationBarWithBackButton(backImage: UIImage) {
+    public func setNavigationBarBackButton(image: UIImage) {
         navigationController!.navigationBar.topItem?.title = ""
-        navigationController!.navigationBar.backIndicatorImage = backImage
-        navigationController!.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationController!.navigationBar.backIndicatorImage = image
+        navigationController!.navigationBar.backIndicatorTransitionMaskImage = image
     }
     
     /**
@@ -67,7 +67,7 @@ public extension UIViewController {
      - parameter color: The new color of the navigation bar.
      - warning: This function must be called when self is inside a navigation controller. If not it will arise a runtime nil-force-unwrapping error.
      */
-    func configureNavigationBarColor(_ color: UIColor) {
+    public func setNavigationBarColor(_ color: UIColor) {
         navigationController!.navigationBar.barTintColor = color
     }
     
@@ -75,7 +75,7 @@ public extension UIViewController {
      Sets a collection of buttons as the navigation bar left buttons.
      - parameter buttons: the Array of buttons to use.
      */
-    func configureNavigationLeftButtons(_ buttons: [UIBarButtonItem]) {
+    public func setNavigationLeftButtons(_ buttons: [UIBarButtonItem]) {
         navigationItem.leftBarButtonItems = buttons
     }
     
@@ -83,17 +83,17 @@ public extension UIViewController {
      Sets a collection of buttons as the navigation bar right buttons.
      - parameter buttons: the Array of buttons to use.
      */
-    func configureNavigationRightButtons(_ buttons: [UIBarButtonItem]) {
+    public func setNavigationRightButtons(_ buttons: [UIBarButtonItem]) {
         navigationItem.rightBarButtonItems = buttons
     }
 
     /**
      Adds and configures a label to use as title of the navigation bar.
      - parameter title: the string of the label.
-     - parameter font: the font to use for the label. Default: .systemFont size 18
-     - parameter color: the color of the text. Default: .white
+     - parameter font: the font to use for the label.
+     - parameter color: the color of the text.
      */
-    func setNavBarTitle(_ title: String, font: UIFont, color: UIColor) {
+    public func setNavigationBarTitle(_ title: String, font: UIFont, color: UIColor) {
         let label = UILabel(frame: .zero)
         label.backgroundColor = .clear
         label.font = font
