@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var yellowView: UIView!
     @IBOutlet weak var greenView: UIView!
     @IBOutlet weak var cardsContainerView: UIView!
-
+    @IBOutlet weak var draggableView: UIImageView!
+    
     var rotationAnimator: UIViewPropertyAnimator!
     var lastTranslation = CGPoint.zero
 
@@ -32,11 +33,22 @@ class ViewController: UIViewController {
 
         setUpCardAnimation()
         setupSimpleAnimations()
+        
+        draggableView.isDraggable(returnToPosition: true,
+                                  onDragStarted: { view in
+                view.backgroundColor = UIColor.blue
+            },
+                                  onDragFinished: { view in
+                view.backgroundColor = UIColor.red
+            })
+        draggableView.backgroundColor = UIColor.red
+        draggableView.layer.masksToBounds = true
+        draggableView.layer.cornerRadius = 23.5
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         segmentedControl.selectedSegmentIndex = 0
         segmentedControlValueChanged()
     }
